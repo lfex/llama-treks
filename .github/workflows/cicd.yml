@@ -25,7 +25,7 @@ jobs:
     - uses: erlef/setup-beam@v1
       with:
         otp-version: ${{ matrix.otp-version }}
-        rebar3-version: '3.25'
+        rebar3-version: ${{ matrix.otp-version >= 26 && '3.25' || '3.23' }}
     - name: Compile
       run: rebar3 compile
     #- name: Xref Checks
