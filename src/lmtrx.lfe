@@ -1,4 +1,4 @@
-(defmodule llamatreks
+(defmodule lmtrx
   (export
    (my-fun 0)))
 

@@ -1,4 +1,4 @@
-PROJECT = llamatreks
+PROJECT = llama-treks
 
 default: build
 
