@@ -1,0 +1,38 @@
+name: ci/cd
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, 'release/*' ]
+  pull_request:
+    branches: [ main, 'release/*' ]
+  # Build once a month, just to be sure things are still working
+  schedule:
+    - cron: "19 3 23 * *"
+
+jobs:
+
+  builds:
+    name: Erlang $
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        otp_version: ['28' ,'27', '26', '25', '24']
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: erlef/setup-beam@v1
+      with:
+        otp-version: $
+        rebar3-version: '3.25'
+    - name: Compile
+      run: rebar3 compile
+    - name: Xref Checks
+      run: rebar3 xref
+    - name: Dialyzer
+      run: rebar3 dialyzer
+    - name: Proper Tests
+      run: rebar3 as test do compile, proper --regressions
+    - name: Run Unit Tests
+      run: rebar3 as test lfe ltest

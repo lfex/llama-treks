@@ -1,0 +1,15 @@
+{application, 'llama-treks', [
+    {description, "A pure LFE matrix, linear algebra library"},
+    {vsn, "0.0.1"},
+    {registered, []},
+    {applications, [
+        kernel,
+        stdlib
+    ]},
+    {env,[]},
+    {modules, []},
+
+    {pkg_name, llama_treks},
+    {licenses, ["Apache 2.0"]},
+    {links, []}
+ ]}.
