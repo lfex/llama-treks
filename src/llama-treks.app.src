@@ -10,6 +10,10 @@
     {modules, []},
 
     {pkg_name, llama_treks},
-    {licenses, ["Apache 2.0"]},
-    {links, []}
+    {licenses, ["Apache-2.0"]},
+    {links, [
+        {"GitHub", "https://github.com/lfex/llama-treks"},
+        {"Hex", "https://hex.pm/packages/llama_treks"}
+    ]},
+    {exclude_files, ["priv/*"]}
  ]}.
